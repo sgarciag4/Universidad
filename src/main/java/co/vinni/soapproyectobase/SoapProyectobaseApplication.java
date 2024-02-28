@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * author Vinni 2023
@@ -17,18 +18,38 @@ public class SoapProyectobaseApplication {
 
         ControladorVehiculo cv = new ControladorVehiculo();
         Vehiculo vehiculo = new Vehiculo();
+        Vehiculo vehiculo2 = new Vehiculo();
         Date fecha = new Date(124, 1, 27, 10, 30, 15);
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        vehiculo.setPais("Colombia");
-        vehiculo.setPrecio(30000);
-        vehiculo.setTipo("automovil");
-        vehiculo.setMunicipio("Viota");
+        vehiculo.setPais("Ecuador");
+        vehiculo.setPrecio(70000);
+        vehiculo.setTipo("camioneta");
+        vehiculo.setMunicipio("Bogota");
         vehiculo.setFechaAdquisicion(fecha);
-        vehiculo.setMarca("Suzuki");
-        vehiculo.setDepartamento("Cundinamarca");
-        cv.registrarVehiculo(vehiculo);
+        vehiculo.setMarca("audi");
+        vehiculo.setDepartamento("Bogota");
 
+//        vehiculo2.setPais("Ecuador");
+//        vehiculo2.setPrecio(70000);
+//        vehiculo2.setTipo("Campero");
+//        vehiculo2.setMunicipio("Quito");
+//        vehiculo2.setFechaAdquisicion(fecha);
+//        vehiculo2.setMarca("Toyota");
+//        vehiculo2.setDepartamento("Sin muni");
 
+        boolean guardado = cv.registrarVehiculo(vehiculo);
+//        boolean guardado2 = cv.registrarVehiculo(vehiculo2);
+        System.out.println(guardado);
+//        System.out.println(guardado2);
+
+        List vehiculo1 = cv.obtenerArchivo("Vehiculos");
+
+        if (vehiculo1 != null) {
+            System.out.println("Lista recuperada:");
+            for (Object obj : vehiculo1) {
+                System.out.println(obj);
+            }
+        }
 
 
 

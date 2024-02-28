@@ -8,18 +8,23 @@ import co.vinni.soapproyectobase.utilidades.UtilidadArchivos;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
+import java.util.*;
 
 public class ServicioVehiculo implements RepositorioVehiculo, Serializable  {
 
-    public boolean registrarVehiculo(Vehiculo vehiculo){
 
-        return UtilidadArchivos.guardar("Vehiculos", vehiculo);
+    private List<Vehiculo> listaVehiculos = new ArrayList<>();
+
+    public boolean registrarVehiculo(Vehiculo vehiculo){
+        listaVehiculos = obtenerVehiculo("Vehiculos");
+        listaVehiculos.add(vehiculo);
+
+        return UtilidadArchivos.guardar("Vehiculos", listaVehiculos);
     }
 
-    public static obtenerVehiculo(Vehiculo vehiculo){
+    public List obtenerVehiculo(String nombreArchivo){
 
-        return UtilidadArchivos.obtener("Vehiculos", vehiculo);
+        return UtilidadArchivos.obtener(nombreArchivo);
     }
 
 
@@ -37,14 +42,12 @@ public class ServicioVehiculo implements RepositorioVehiculo, Serializable  {
             porcentaje = valor * 0.10;
             total = valor - porcentaje;
             return total;
-        } else if (anosTrascurridos < 3) {
-            porcentaje = valor * 0.20;
-            total = valor - porcentaje;
-            return total;
         }
-        porcentaje = valor * 0.30;
+
+        porcentaje = valor * 0.20;
         total = valor - porcentaje;
         return total;
+        }
     }
 
-}
+

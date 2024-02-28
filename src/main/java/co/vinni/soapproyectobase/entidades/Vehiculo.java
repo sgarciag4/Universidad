@@ -20,4 +20,18 @@ public class Vehiculo implements Serializable {
     private String tipo;
     private String marca;
     private Date fechaAdquisicion;
+
+
+    @Override
+    public String toString() {
+        return "Vehiculo{" +
+                "precio=" + precio +
+                ", pais='" + pais + '\'' +
+                ", departamento='" + departamento + '\'' +
+                ", municipio='" + municipio + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", fechaAdquisicion=" + fechaAdquisicion +
+                '}';
+    }
 }
