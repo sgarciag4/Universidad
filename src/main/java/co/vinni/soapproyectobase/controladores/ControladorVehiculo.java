@@ -13,7 +13,6 @@ public class ControladorVehiculo {
         return sv.registrarVehiculo(vehiculo);
     }
 
-
     public List obtenerArchivo(String nombreArchivo){
         return sv.obtenerVehiculo(nombreArchivo);
     }
